@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/law
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: law
+      MYSQL_USER: law
+      MYSQL_PASSWORD: law
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - 33086:3306
