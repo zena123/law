@@ -6,8 +6,8 @@ app_name = "core"
 
 router = DefaultRouter()
 router.register(r'clients', ClientViewSet)
-router.register(r'document_attachments', DocumentAttachmentViewSet)
-router.register(r'legal_requests', LegalRequestViewSet)
+router.register(r'document-attachments', DocumentAttachmentViewSet)
+router.register(r'legal-requests', LegalRequestViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
