@@ -18,24 +18,13 @@
     <label for="document">Document Attachment:</label>
     <input type="file" @change="handleFileChange" accept=".pdf">
 
-      <div v-if="!$v.$pending && !$v.$pendingClient">
-      <p v-if="!$v.client_name.required">Name is required.</p>
-      <p v-if="!$v.client_email.required">Email is required.</p>
-      <p v-if="!$v.client_email.email">Invalid email format.</p>
-      <p v-if="!$v.client_phone.required">Phone is required.</p>
-
-
-      <p v-if="!$v.case_description.required">Case description is required.</p>
-      <p v-if="!$v.case_type.required">Case type is required.</p>
-      <p v-if="!$v.document.required">Document attachment is required.</p>
-    </div>
-
     <button type="submit">Submit Request</button>
   </form>
 </template>
 
 <script>
-import { required, email } from '@vuelidate/validations';
+import axios from 'axios';
+
 
 export default {
   data() {
@@ -48,14 +37,6 @@ export default {
       document: null,
     };
   },
-    validations: {
-  client_name: { required },
-  client_email: { required, email },
-  client_phone: { required },
-  case_description: { required },
-  case_type: { required },
-  document: { required },
-  },
   methods: {
     handleFileChange(event) {
       // Access the selected file
@@ -63,7 +44,7 @@ export default {
     },
     submitRequest() {
       // Validate form inputs and handle the submission
-      if (this.$v.$pending || this.$v.$pendingClient || !this.$v.$invalid) {
+      if (this.validateForm()) {
         // Create a FormData object to handle file uploads
         const formData = new FormData();
         formData.append('client_name', this.client_name);
@@ -84,7 +65,11 @@ export default {
           } else {
         console.log("unexpected error")
       }
-      }
+      },
+      validateForm() {
+      // Implement form validation logic
+      // Return true if the form is valid, otherwise false
+    },
     },
 };
 </script>

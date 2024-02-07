@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import LegalRequestForm from '../components/LegalRequestForm.vue';
-import Dashboard from '../views/Dashboard.vue';
+import Dashboard from '../views/LegalRequestsDashboard.vue';
 
 Vue.use(VueRouter);
 

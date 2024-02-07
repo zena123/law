@@ -36,6 +36,7 @@
 import axios from "axios";
 
 export default {
+    name: 'LegalRequestsDashboard',
   data() {
     return {
       legalRequests: [],
