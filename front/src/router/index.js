@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/submit-request', component: LegalRequestForm, meta: { requiresAuth: true, userRole: 'user' } },
   { path: '/dashboard', component: LegalRequestsDashboard, meta: { requiresAuth: true, userRole: 'admin' } },
-  // ... other routes ...
+  // { path: '/login', },
 ];
 
 const router = new VueRouter({
